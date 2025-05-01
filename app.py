@@ -1,6 +1,11 @@
+import io
+import segno
+from flask import Flask, request, Response
+
+app = Flask(__name__)
+
 @app.route("/qr")
 def generate_qr():
-    import io
     data = request.args.get("data", "")
     fmt = request.args.get("format", "svg").lower()
     qr = segno.make(data, error='l')
